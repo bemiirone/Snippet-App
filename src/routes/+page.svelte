@@ -25,12 +25,12 @@
 				} else {
 					snippetStore.set(data.snippets);
 				}
-				
     };
 
 		onMount(() => {
 			loadData();
     });
+		
 </script>
 
 <div class="flex">
