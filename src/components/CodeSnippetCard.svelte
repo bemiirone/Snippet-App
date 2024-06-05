@@ -14,13 +14,13 @@
 </script>
 
 <div class="card">
-  <header class="card-header">
+  <header class="card-header flex justify-between">
     <h3>{snippet.title}</h3>
-    <div class="float-right">
+    <div class="">
       <button type="button" class="btn btn-sm variant-filled-secondary" on:click={()=> toggleFavorite(index)}>
         {snippet.favorite ? '♥' : '♡'}
       </button>
-      <button type="button" class="btn btn-sm variant-filled-error on:click={()=> removeSnippet(index)}">X</button>
+      <button type="button" class="btn btn-sm variant-filled-error" on:click={()=> removeSnippet(index)}>X</button>
     </div>
   </header>
   <section class="p-4">
