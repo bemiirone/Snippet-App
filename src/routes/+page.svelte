@@ -29,12 +29,6 @@
 					<option>CSS</option>
 					<option>JavaScript</option> 
 					<option>TypeScript</option>
-					<option>Python</option>
-					<option>Ruby</option>
-					<option>Java</option>
-					<option>C#</option>
-					<option>Go</option>
-					<option>SQL</option>
 			</label>
 			<label for="" class="label">
 				<span class="label-text">Code Snippet</span>
