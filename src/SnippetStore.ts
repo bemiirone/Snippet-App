@@ -9,25 +9,34 @@ export function addSnippet(snippet: CodeSnippetInput) {
     favorite: false
   };
   snippetStore.update((items) => {
-    return [newSnippet, ...items];
+    const updatedItems = [newSnippet, ...items];
+    localStorage.setItem('snippets', JSON.stringify(updatedItems));
+    return updatedItems;
   });
 } 
 
 // remove snippet
 export function removeSnippet(index: number) {
   snippetStore.update((items) => {
-    return items.filter((_, i) => i !== index);
+    const updatedItems = items.filter((_, i) => i !== index);
+    localStorage.setItem('snippets', JSON.stringify(updatedItems));
+    return updatedItems;
   });
 }
 
 // toggle favorite
 export function toggleFavorite(index: number) {
   snippetStore.update((items) => {
-    return items.map((snippet, i) => {
+    const updatedItems = items.map((snippet, i) => {
       if (i === index) {
-        snippet.favorite = !snippet.favorite;
+        return {
+        ...snippet,
+        favorite: !snippet.favorite
+        };
       }
       return snippet;
     });
+    localStorage.setItem('snippets', JSON.stringify(updatedItems));
+    return updatedItems;
   });
 }

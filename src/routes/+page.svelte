@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { addSnippet, snippetStore } from '../SnippetStore';
 	import CodeSnippetCard from '../components/CodeSnippetCard.svelte';
 	import type { PageData } from './$types';
@@ -11,7 +12,25 @@
 
 	export let data: PageData;
 
-	snippetStore.set(data.snippets);
+	const loadData = () => {
+				let userData: CodeSnippet[] = [];
+				const localData = localStorage.getItem('snippets');
+				if (localData) {
+					userData = JSON.parse(localData);
+					const pageData: PageData = {
+					...data,
+					snippets: userData
+				};
+				snippetStore.set(pageData.snippets);
+				} else {
+					snippetStore.set(data.snippets);
+				}
+				
+    };
+
+		onMount(() => {
+			loadData();
+    });
 </script>
 
 <div class="flex">
